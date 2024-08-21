@@ -1,1 +1,4 @@
-# price-parser
+# Парсер для магазина "Перекресток"
+
+## Запуск
+* node index.js <url> <region>"
