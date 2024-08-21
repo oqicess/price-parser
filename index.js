@@ -131,15 +131,18 @@ function delay(time) {
 // Прокрутка до конца страницы для полного скриншота, если не нужно - удалить
 function scroll(page) {
     return page.evaluate(async () => {
-        const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
         while (true) {
             window.scrollBy(0, window.innerHeight);
-            await delay(100);
             if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+                const element = document.querySelector(
+                    '.UiLayoutContainer_container__Kve37.StickyHeader_root__Rrhb8'
+                );
+                if (element) {
+                    element.remove();
+                }
+
                 break;
             }
         }
-        await delay(1000);
     });
 }
